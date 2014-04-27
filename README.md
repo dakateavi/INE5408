@@ -1,4 +1,4 @@
 INE5408
 =======
 
-Estruturas De DAdos
+Data Structures implementations.
