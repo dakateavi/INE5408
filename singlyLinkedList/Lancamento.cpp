@@ -1,9 +1,10 @@
 #include "Lancamento.h"
 
-Lancamento::Lancamento(char* nome, double valor){
-        this->nome = new char[strlen(nome) + 1];
-        strcpy(this->nome,nome);
-        this->valor = valor;
+Lancamento::Lancamento(char* nome,const double& valor):
+	valor(valor)
+{
+    this->nome = new char[strlen(nome) + 1];
+    strcpy(this->nome,nome);
 }
 
 bool Lancamento::operator<(const Lancamento& aSerComparado) const {

@@ -2,7 +2,9 @@
 #define _LISTA_H_
 
 #include <stdexcept>
-#include <iostream>
+#include <string>
+
+using std::string;
 
 template <class T>
 class List{
@@ -13,7 +15,7 @@ class List{
 			item(item)
 		{}
 
-		Node* getNextNode()
+		Node* getNextNode() const
 		{
 			return next;
 		}
@@ -22,7 +24,7 @@ class List{
 			next = nextNode;
 		}
 
-		T getItem()
+		T& getItem() 
 		{
 			return item;
 		}
@@ -39,14 +41,36 @@ public:
 			pointer(pointer)
 		{}
 
-		void next() 
-		{
-			pointer = pointer->getNextNode();
-		}
-
-		Node* getNode() const 
+		Node* getNode() const
 		{
 			return pointer;
+		}
+
+        Iterator& operator++()
+        {
+            pointer = pointer->getNextNode();
+        	return *this;
+        }
+
+        Iterator& operator++(int){
+            Iterator& aux(this);
+            ++this;
+            return aux;
+        }
+
+        T& operator*() const
+        {
+            return pointer->getItem();
+        }
+
+		bool operator==(const Iterator& aux) const
+		{
+			return this->pointer == aux.getNode();
+		}
+
+		bool operator!=(const Iterator& aux) const
+		{
+			return this->pointer != aux.getNode();
 		}
 
 	private:
@@ -60,7 +84,9 @@ public:
 
 	~List() 
 	{
-
+		while (!isEmpty()) {
+			popFront();
+		}
 	}
 
 	bool isEmpty() const
@@ -142,7 +168,9 @@ public:
 	T popPosition(int position)
 	{
 		if (position < 0 || size < position) {
-			throw std::range_error("Position out of range.");
+			string error;
+			error = "Número inválido... Entre com um número válido, inteiro, maior ou igual a 0 e menor ou igual a" + length();
+			throw std::range_error(error);
 		}
 
 		if (position == 0) {

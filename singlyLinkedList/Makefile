@@ -15,4 +15,3 @@ test: mainTest.o ListTest.o
 .c.o:
 	$(CC) -c $<
 
-
