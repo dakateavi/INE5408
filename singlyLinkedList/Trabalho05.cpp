@@ -46,7 +46,7 @@ void remTran() {
 		getchar();
 		switch (opcao) {
 		case 't':
-			delete listaAtual;
+			(*listaAtual) = ListaContabil();
 			printf("Lista destruída!");
 		  	sair = true;
 			break;

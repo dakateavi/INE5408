@@ -84,8 +84,10 @@ public:
 
 	~List() 
 	{
-		while (!isEmpty()) {
-			popFront();
+		for (int i = 0; i < size; i++) {
+			Node* next = firstNode->getNextNode();
+			delete firstNode;
+			firstNode = next;
 		}
 	}
 
