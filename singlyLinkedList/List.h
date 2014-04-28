@@ -63,15 +63,15 @@ public:
             return pointer->getItem();
         }
 
-		bool operator==(const Iterator& aux) const
-		{
-			return this->pointer == aux.getNode();
-		}
+	bool operator==(const Iterator& aux) const
+	{
+		return this->pointer == aux.getNode();
+	}
 
-		bool operator!=(const Iterator& aux) const
-		{
-			return this->pointer != aux.getNode();
-		}
+	bool operator!=(const Iterator& aux) const
+	{
+		return this->pointer != aux.getNode();
+	}
 
 	private:
 		Node* pointer;
