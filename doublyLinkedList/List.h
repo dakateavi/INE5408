@@ -3,8 +3,7 @@
 
 template <class T>
 class List {
-	class Node{
-	public:
+	struct Node{
 		Node(Node* previous, Node* next, const T& element):
 			previous(previous),
 			next(next),
@@ -118,6 +117,15 @@ public:
 
 		return element;
 	}
+
+	void insert(int position, const T& added)
+	{}
+
+	T remove(int position)
+	{}
+
+	T at(int position) const
+	{}
 
 private:
 	int _size;
