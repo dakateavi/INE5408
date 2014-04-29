@@ -22,6 +22,16 @@ public:
 		last(0)
 	{}
 
+	~List()
+	{
+		Node* aux;
+		for(int i = 0; i < _size; ++i){
+			aux = first;
+			first = first->next;
+			delete aux;
+		}
+	}
+
 	bool isEmpty() const
 	{
 		return _size == 0;
