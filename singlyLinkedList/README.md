@@ -1,4 +1,0 @@
-Estrutura
-=========
-
-Estruturas de dados
