@@ -3,6 +3,8 @@
 
 #include "List.h"
 
+using structures::List;
+
 class ListTest : public testing::Test {
 public:
 	List<int> list;
