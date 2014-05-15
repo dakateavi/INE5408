@@ -1,0 +1,27 @@
+INCLUDE = -I../structures
+CXXFLAGS = -Wall $(INCLUDE)
+LDLIBS = -lgtest
+
+all: test $(EXEC)
+
+.PHONY : test clean
+
+test: $(TEST)
+	./$<
+
+depend: .depend
+
+.depend: $(TEST_SRC:=.cpp) $(MAIN_SRC:=.cpp)
+	rm -f ./.depend
+	$(CXX) $(CXXFLAGS) -MM $^>>./.depend;
+
+$(TEST): $(TEST_SRC:=.o)
+	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
+
+$(EXEC): $(MAIN_SRC:=.o)
+	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
+
+clean:
+	$(RM) -rf $(TEST) $(EXEC) $(EXTRA) *.o .depend
+
+-include .depend

@@ -15,8 +15,8 @@ class DoublyLinkedList : public structures::List<T> {
 		element(element)
 		{}
 
-		Node* next;
 		Node* previous;
+		Node* next;
 		T element;
 	};
 public:
@@ -99,7 +99,7 @@ public:
 
 	T popBack()
 	{
-		void checkEmpty();
+		checkEmpty();
 
 		Node *removed = last;
 		last = removed->previous;
@@ -116,7 +116,7 @@ public:
 
 	T popFront()
 	{
-		void checkEmpty();
+		checkEmpty();
 
 		Node *removed = first;
 		first = removed->next;
@@ -133,7 +133,7 @@ public:
 
 	T remove(int position)
 	{
-		void checkBounds();
+		checkBounds(position);
 
 		if (position == 0) {
 			return popFront();
@@ -171,7 +171,7 @@ public:
 
 	T at(int position) const
 	{
-		checkBounds();
+		checkBounds(position);
 
 		Node *p = first;
 		for (int i = 0; i < position; ++i) {
@@ -181,12 +181,12 @@ public:
 	}
 
 private:
-	void checkEmpty()
+	void checkEmpty() const
 	{
 		if (_size == 0) throw std::out_of_range("Empty list!");
 	}
 
-	void checkBounds()
+	void checkBounds(int position) const
 	{
 		if (position >= _size || position < 0) throw std::out_of_range("Out of bounds!");
 	}

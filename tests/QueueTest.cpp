@@ -45,3 +45,53 @@ TEST_F(QueueTest, popFromEmptyQueue)
 {
 	EXPECT_THROW(queue.pop() , std::out_of_range);
 }
+
+TEST_F(DoublyLinkedQueueTest, isCreatedEmpty)
+{
+	EXPECT_EQ(queue.size(), 0);
+}
+
+TEST_F(DoublyLinkedQueueTest, topOnEmptyThrows)
+{
+	EXPECT_THROW(queue.top(), std::out_of_range);
+}
+
+TEST_F(DoublyLinkedQueueTest, pushOneElement)
+{
+	queue.push(42);
+	EXPECT_EQ(queue.size(), 1);
+}
+
+TEST_F(DoublyLinkedQueueTest, pushManyElements)
+{
+	queue.push(42);
+	queue.push(1963);
+	queue.push(13);
+	EXPECT_EQ(3, queue.size());
+	EXPECT_EQ(42, queue.top());
+}
+
+TEST_F(DoublyLinkedQueueTest, popFromSingletonMakesEmpty)
+{
+	queue.push(42);
+	EXPECT_EQ(42, queue.pop());
+	EXPECT_EQ(0, queue.size());
+}
+
+TEST_F(DoublyLinkedQueueTest, popAll)
+{
+	queue.push(42);
+	queue.push(1963);
+	queue.push(13);
+	EXPECT_EQ(42, queue.pop());
+	EXPECT_EQ(2, queue.size());
+	EXPECT_EQ(1963, queue.pop());
+	EXPECT_EQ(1, queue.size());
+	EXPECT_EQ(13, queue.pop());
+	EXPECT_EQ(0, queue.size());
+}
+
+TEST_F(DoublyLinkedQueueTest, popFromEmptyThrows)
+{
+	EXPECT_THROW(queue.pop(), std::out_of_range);
+}
