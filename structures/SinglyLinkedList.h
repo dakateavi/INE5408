@@ -6,7 +6,7 @@
 
 namespace structures {
 
-template <typename T>
+template <class T>
 class SinglyLinkedList : public structures::List<T> {
 	struct Node {
 		Node(Node *next, const T &element):
@@ -84,7 +84,7 @@ public:
 
 	T remove(int position)
 	{
-		if (position >= _size || position < 0) throw std::out_of_range("Out of bounds!");
+		checkBounds();
 
 		if (position == 0) {
 			return popFront();
@@ -103,7 +103,7 @@ public:
 
 	T at(int position) const
 	{
-		if (position >= _size || position < 0) throw std::out_of_range("Out of bounds!");
+		checkBounds();
 
 		Node *p = first;
 		for (int i = 0; i < position; ++i) {
@@ -112,10 +112,26 @@ public:
 		return p->element;
 	}
 
+	T front()
+	{
+		checkEmpty();
+		return first->element;
+	}
+
+    T back()
+    {
+    	return at(_size - 1);
+    }
+
 private:
 	void checkEmpty() const
 	{
 		if (_size == 0) throw std::out_of_range("Empty list!");
+	}
+
+	void checkBounds()
+	{
+		if (position >= _size || position < 0) throw std::out_of_range("Out of bounds!");
 	}
 
 	Node *previousNode(int position)

@@ -36,6 +36,16 @@ public:
 		}
 	}
 
+	int size() const
+	{
+		return _size;
+	}
+
+	bool isEmpty() const
+	{
+		return _size == 0;
+	}
+
 	void pushBack(const T &element)
 	{
 		if (_size == 0) {
@@ -89,7 +99,7 @@ public:
 
 	T popBack()
 	{
-		if (_size == 0) throw std::out_of_range("Empty list!");
+		void checkEmpty();
 
 		Node *removed = last;
 		last = removed->previous;
@@ -106,7 +116,7 @@ public:
 
 	T popFront()
 	{
-		if (_size == 0) throw std::out_of_range("Empty list!");
+		void checkEmpty();
 
 		Node *removed = first;
 		first = removed->next;
@@ -123,7 +133,7 @@ public:
 
 	T remove(int position)
 	{
-		if (position >= _size || position < 0) throw std::out_of_range("Out of bounds!");
+		void checkBounds();
 
 		if (position == 0) {
 			return popFront();
@@ -147,9 +157,21 @@ public:
 		return element;
 	}
 
+	T front()
+	{
+		checkEmpty();
+		return first->element;
+	}
+
+	T back()
+	{
+		checkEmpty();
+		return last->element;
+	}
+
 	T at(int position) const
 	{
-		if (position >= _size || position < 0) throw std::out_of_range("Out of bounds!");
+		checkBounds();
 
 		Node *p = first;
 		for (int i = 0; i < position; ++i) {
@@ -158,12 +180,17 @@ public:
 		return p->element;
 	}
 
-	int size() const
+private:
+	void checkEmpty()
 	{
-		return _size;
+		if (_size == 0) throw std::out_of_range("Empty list!");
 	}
 
-private:
+	void checkBounds()
+	{
+		if (position >= _size || position < 0) throw std::out_of_range("Out of bounds!");
+	}
+
 	int _size;
 
 	Node* first;

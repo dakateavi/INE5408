@@ -1,26 +1,26 @@
 #include <gtest/gtest.h>
+
 #include <stdexcept>
+#include "DoublyLinkedList.h"
 
-#include "List.h"
+using structures::DoublyLinkedList;
 
-using structures::List;
-
-class ListTest : public testing::Test {
+class DoublyLinkedListTest : public testing::Test {
 public:
-	List<int> list;
+	DoublyLinkedList<int> list;
 };
 
-TEST_F(ListTest, emptyListIsEmpty)
+TEST_F(DoublyLinkedListTest, emptyListIsEmpty)
 {
 	EXPECT_TRUE(list.isEmpty());
 }
 
-TEST_F(ListTest, sizeOfEmptyListEqualsZero)
+TEST_F(DoublyLinkedListTest, sizeOfEmptyListEqualsZero)
 {
 	EXPECT_EQ(0, list.size());
 }
 
-TEST_F(ListTest, pushPopFrontOneElement)
+TEST_F(DoublyLinkedListTest, pushPopFrontOneElement)
 {
 	list.pushFront(42);
 	EXPECT_EQ(1, list.size());
@@ -30,12 +30,12 @@ TEST_F(ListTest, pushPopFrontOneElement)
 	EXPECT_TRUE(list.isEmpty());
 }
 
-TEST_F(ListTest, popFrontFromEmptyList)
+TEST_F(DoublyLinkedListTest, popFrontFromEmptyList)
 {
 	EXPECT_THROW(list.popFront(), std::length_error);
 }
 
-TEST_F(ListTest, pushPopFrontManyElements)
+TEST_F(DoublyLinkedListTest, pushPopFrontManyElements)
 {
 	list.pushFront(42);
 	list.pushFront(1908);
@@ -49,7 +49,7 @@ TEST_F(ListTest, pushPopFrontManyElements)
 	EXPECT_TRUE(list.isEmpty());
 }
 
-TEST_F(ListTest, pushPopBackOneElement)
+TEST_F(DoublyLinkedListTest, pushPopBackOneElement)
 {
 	list.pushBack(42);
 	EXPECT_EQ(1, list.size());
@@ -57,7 +57,7 @@ TEST_F(ListTest, pushPopBackOneElement)
 	EXPECT_EQ(0, list.size());
 }
 
-TEST_F(ListTest, pushPopBackManyElements)
+TEST_F(DoublyLinkedListTest, pushPopBackManyElements)
 {
 	list.pushBack(42);
 	list.pushBack(1908);

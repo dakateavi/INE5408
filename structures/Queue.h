@@ -25,12 +25,12 @@ public:
 
   T front() const
   {
-    return container.at(0);
+    return container.front();
   }
 
   T back()
   {
-    return container.at(container.size()-1);
+    return container.back();
   }
 
   T pop()
