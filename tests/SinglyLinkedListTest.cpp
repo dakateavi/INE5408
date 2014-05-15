@@ -1,19 +1,19 @@
 #include <gtest/gtest.h>
 #include "List.h"
 
-class ListTest : public testing::Test {
+class SinglyLinkedListTest : public testing::Test {
 public:
-	List<int>  list;
+	SinglyLinkedList<int>  list;
 };
 
-TEST_F(ListTest, pushFrontPopFrontOneElement)
+TEST_F(SinglyLinkedListTest, pushFrontPopFrontOneElement)
 {
 	list.pushFront(5);
 	EXPECT_EQ(1 , list.length());
 	EXPECT_EQ(5 , list.popFront());
 }
 
-TEST_F(ListTest, isListEmpty)
+TEST_F(SinglyLinkedListTest, isListEmpty)
 {
 	EXPECT_TRUE(list.isEmpty());
 	EXPECT_EQ(0 , list.length());
@@ -21,7 +21,7 @@ TEST_F(ListTest, isListEmpty)
 	EXPECT_FALSE(list.isEmpty());
 }
 
-TEST_F(ListTest, pushFrontPopFrontManyElements)
+TEST_F(SinglyLinkedListTest, pushFrontPopFrontManyElements)
 {
 	list.pushFront(42);
 	list.pushFront(2048);
@@ -32,12 +32,12 @@ TEST_F(ListTest, pushFrontPopFrontManyElements)
 	EXPECT_EQ(42, list.popFront());
 }
 
-TEST_F(ListTest, popFromEmptyList)
+TEST_F(SinglyLinkedListTest, popFromEmptyList)
 {
 	EXPECT_THROW(list.popFront() , std::range_error);
 }
 
-TEST_F(ListTest, pushBackPopBackOneElement)
+TEST_F(SinglyLinkedListTest, pushBackPopBackOneElement)
 {
 	list.pushBack(42);
 	EXPECT_EQ(1, list.length());
