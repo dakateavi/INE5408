@@ -6,7 +6,7 @@ all: test $(EXEC)
 
 .PHONY : test clean
 
-test: $(TEST)
+test: $(EXEC)
 	./$<
 
 depend: .depend
@@ -15,13 +15,13 @@ depend: .depend
 	rm -f ./.depend
 	$(CXX) $(CXXFLAGS) -MM $^>>./.depend;
 
-$(TEST): $(TEST_SRC:=.o)
+$(EXEC): $(TEST_SRC:=.o)
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
 
 $(EXEC): $(MAIN_SRC:=.o)
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS) $(LDLIBS)
 
 clean:
-	$(RM) -rf $(TEST) $(EXEC) $(EXTRA) *.o .depend
+	$(RM) -rf $(EXEC) $(EXEC) $(EXTRA) *.o .depend
 
 -include .depend
