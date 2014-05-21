@@ -1,7 +1,7 @@
 #ifndef _LIST_H_
 #define _LIST_H_
 
-namespace structures {
+namespace dataStructures {
 
 template <class T>
 class List{

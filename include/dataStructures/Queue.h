@@ -1,11 +1,11 @@
 #ifndef _QUEUE_H_
 #define _QUEUE_H_
 
-#include "DoublyLikedList.h"
+#include "DoublyLinkedList.h"
 
-namespace structures {
+namespace dataStructures {
 
-template <class T, class Container = structures::DoublyLikedList<T> >
+template <class T, class Container = dataStructures::DoublyLinkedList<T> >
 class Queue {
 public:
   int size() const
@@ -39,7 +39,7 @@ public:
   }
 
 private:
-  Container<T> container;
+  Container container;
 };
 
 }

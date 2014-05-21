@@ -4,10 +4,10 @@
 #include <stdexcept>
 #include "List.h"
 
-namespace structures {
+namespace dataStructures {
 
 template <class T>
-class DoublyLinkedList : public structures::List<T> {
+class DoublyLinkedList : public dataStructures::List<T> {
 	struct Node{
 		Node(Node* previous, Node* next, const T& element):
 		previous(previous),

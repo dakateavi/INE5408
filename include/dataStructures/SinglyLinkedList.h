@@ -4,10 +4,10 @@
 #include <stdexcept>
 #include "List.h"
 
-namespace structures {
+namespace dataStructures {
 
 template <class T>
-class SinglyLinkedList : public structures::List<T> {
+class SinglyLinkedList : public dataStructures::List<T> {
 	struct Node {
 		Node(Node *next, const T &element):
 		next(next),
